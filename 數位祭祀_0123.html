@@ -1,0 +1,79 @@
+<!DOCTYPE html><html><head><meta charset='utf-8'><meta http-equiv='Access-Control-Allow-Headers' content='Origin, X-Requested-With, Content-Type, Accept'><meta http-equiv='Access-Control-Allow-Methods' content='GET,POST,PUT,DELETE,OPTIONS'><meta http-equiv='Access-Control-Allow-Origin' content='*'><meta http-equiv='Access-Control-Allow-Credentials' content='true'><script src='https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js'></script><script src='https://fustyles.github.io/webduino/SpBlocklyJS/GameElements_20190131/marked.min.js'></script><script src='https://fustyles.github.io/webduino/SpBlocklyJS/GameElements_20190131/gameelements.js'></script><link rel='stylesheet' href='https://fustyles.github.io/webduino/SpBlocklyJS/css/icon_custom.css' /><script src='https://fustyles.github.io/webduino/SpBlocklyJS/holistic_20201012/holistic_video.js'></script><script src='https://fustyles.github.io/webduino/SpBlocklyJS/holistic_20201012/holistic.js'></script></head><body>
+<script>
+const delay = (seconds) => {
+    return new Promise((resolve) => {
+        setTimeout(resolve, seconds * 1000);
+    });
+};
+const main = async () => {
+    var _E6_8C_89_E9_88_95x, _E6_8C_89_E9_88_95y, _E6_8C_89_E9_88_95_E5_AF_AC, _E6_8C_89_E9_88_95_E9_AB_98, _E6_8C_89_E9_88_95X2, _E6_8C_89_E9_88_95y2, _E6_8C_89_E9_88_95_E5_AF_AC2, _E6_8C_89_E9_88_95_E9_AB_982, _E9_A3_9F_E6_8C_87x, _E9_A3_9F_E6_8C_87y, _E9_A3_9F_E6_8C_87x2, _E9_A3_9F_E6_8C_87y2;
+
+
+    _E6_8C_89_E9_88_95x = 0;
+    _E6_8C_89_E9_88_95y = 0;
+    _E6_8C_89_E9_88_95_E5_AF_AC = 400;
+    _E6_8C_89_E9_88_95_E9_AB_98 = 200;
+    _E6_8C_89_E9_88_95X2 = 420;
+    _E6_8C_89_E9_88_95y2 = 0;
+    _E6_8C_89_E9_88_95_E5_AF_AC2 = 400;
+    _E6_8C_89_E9_88_95_E9_AB_982 = 200;
+    button_create('1', _E6_8C_89_E9_88_95_E5_AF_AC, _E6_8C_89_E9_88_95_E9_AB_98, _E6_8C_89_E9_88_95x, _E6_8C_89_E9_88_95y, 0.5, '#000099', '燒香焚金', 90, 999, true);
+    button_set('1', "color", '#000000');
+    button_create('2', _E6_8C_89_E9_88_95_E5_AF_AC2, _E6_8C_89_E9_88_95_E9_AB_982, _E6_8C_89_E9_88_95X2, _E6_8C_89_E9_88_95y2, 0.5, '#ff9900', '點燈', 120, 999, true);
+    button_set('2', "color", '#000000');
+    holistic_video("block", "0", "0", "1", "1", "1", "1");
+    holistic_startvideo_media(1220, 1080, "front", 0);
+    holistic_video_position(0, 0);
+    holistic_recognitionFinish = async function() {
+        holistic_state(0);
+        _E9_A3_9F_E6_8C_87x = (holistic_lefthand_position("8", "x"));
+        _E9_A3_9F_E6_8C_87y = (holistic_lefthand_position("8", "y"));
+        _E9_A3_9F_E6_8C_87x2 = (holistic_lefthand_position("8", "x"));
+        _E9_A3_9F_E6_8C_87y2 = (holistic_lefthand_position("8", "y"));
+        if (_E9_A3_9F_E6_8C_87x) {
+            if (_E9_A3_9F_E6_8C_87x >= _E6_8C_89_E9_88_95x && _E9_A3_9F_E6_8C_87x <= _E6_8C_89_E9_88_95x + _E6_8C_89_E9_88_95_E5_AF_AC) {
+                if (_E9_A3_9F_E6_8C_87y >= _E6_8C_89_E9_88_95y && _E9_A3_9F_E6_8C_87y <= _E6_8C_89_E9_88_95y + _E6_8C_89_E9_88_95_E9_AB_98) {
+                    button_set('1', "color", '#33cc00');
+                    await delay(0.5);
+                    button_set('1', "color", '#000000');
+                    await delay(2);
+                    window.open('https://scratch.mit.edu/projects/1115266574/fullscreen/', "_blank");
+                }
+            }
+        }
+        if (_E9_A3_9F_E6_8C_87x2) {
+            if (_E9_A3_9F_E6_8C_87x2 >= _E6_8C_89_E9_88_95X2 && _E9_A3_9F_E6_8C_87x2 <= _E6_8C_89_E9_88_95X2 + _E6_8C_89_E9_88_95_E5_AF_AC2) {
+                if (_E9_A3_9F_E6_8C_87y2 >= _E6_8C_89_E9_88_95y2 && _E9_A3_9F_E6_8C_87y2 < _E6_8C_89_E9_88_95y2 + _E6_8C_89_E9_88_95_E9_AB_982) {
+                    button_set('2', "color", '#33cc00');
+                    await delay(0.5);
+                    button_set('2', "color", '#000000');
+                    await delay(2);
+                    iframe_create('1', 920, 1080, 1000, 0, "0", "yes", 'https://websim.ai/p/d62rz3dp7ynur6gayu9k/16', '', 1, 999, true);
+                }
+            }
+        }
+        async function gamebutton_1_onclick(event) {
+            button_set('1', "color", '#33cc00');
+            await delay(0.5);
+            button_set('1', "color", '#000000');
+            await delay(2);
+            window.open('https://scratch.mit.edu/projects/1115266574/fullscreen/', "_blank");
+            await delay(3);
+        };
+        document.getElementById("gamebutton_1").addEventListener("click", gamebutton_1_onclick, true);
+        async function gamebutton_2_onclick(event) {
+            button_set('2', "color", '#33cc00');
+            await delay(0.5);
+            button_set('2', "color", '#000000');
+            await delay(2);
+            iframe_create('1', 920, 1080, 1000, 0, "0", "yes", 'https://websim.ai/p/d62rz3dp7ynur6gayu9k/16', '', 1, 999, true);
+            await delay(3);
+        };
+        document.getElementById("gamebutton_2").addEventListener("click", gamebutton_2_onclick, true);
+
+        holistic_state(1);
+    };
+};
+main();
+</script>
+</body></html>
