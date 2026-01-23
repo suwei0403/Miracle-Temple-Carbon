@@ -1,0 +1,41 @@
+<!DOCTYPE html><html><head><meta charset='utf-8'><meta http-equiv='Access-Control-Allow-Headers' content='Origin, X-Requested-With, Content-Type, Accept'><meta http-equiv='Access-Control-Allow-Methods' content='GET,POST,PUT,DELETE,OPTIONS'><meta http-equiv='Access-Control-Allow-Origin' content='*'><meta http-equiv='Access-Control-Allow-Credentials' content='true'><script src='https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js'></script><script src='https://fustyles.github.io/webduino/SpBlocklyJS/GameElements_20190131/marked.min.js'></script><script src='https://fustyles.github.io/webduino/SpBlocklyJS/GameElements_20190131/gameelements.js'></script><link rel='stylesheet' href='https://fustyles.github.io/webduino/SpBlocklyJS/css/icon_custom.css' /><script src='https://fustyles.github.io/webduino/SpBlocklyJS/openAI_20221212/openAI.js'></script><script src='https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js'></script><script src='https://fustyles.github.io/webduino/SpBlocklyJS/gemini_20240209/gemini.js'></script></head><body>
+<script>
+const delay = (seconds) => {
+    return new Promise((resolve) => {
+        setTimeout(resolve, seconds * 1000);
+    });
+};
+const main = async () => {
+    var _E5_8E_9F_E5_A7_8B_E5_AF_86_E7_A2_BC1, _E5_8E_9F_E5_A7_8B_E5_AF_86_E7_A2_BC2, _E5_8A_A0_E5_AF_86_E5_AF_86_E7_A2_BC1, Gemini_API_key, _E5_8A_A9_E6_89_8B_E8_A1_8C_E7_82_BA, _E5_8A_A0_E5_AF_86_E5_AF_86_E7_A2_BC2, _E5_95_8F_E9_A1_8C_E5_85_A7_E5_AE_B9, openAI_API_Key, _E7_A2_B3_E8_B6_B3_E8_B7_A1_E5_95_8F_E9_A1_8C_E4_B9_8B_E6_8F_90_E7_A4_BA_E8_A9_9E;
+
+    // 描述此函式...
+    async function openAI_E7_A2_B3_E8_B6_B3_E8_B7_A1_E5_88_86_E6_9E_90() {
+        openai_chat_initial((String(CryptoJS.AES.decrypt(_E5_8A_A0_E5_AF_86_E5_AF_86_E7_A2_BC1, 'LLM1').toString(CryptoJS.enc.Utf8)) + String(CryptoJS.AES.decrypt(_E5_8A_A0_E5_AF_86_E5_AF_86_E7_A2_BC2, 'LLM2').toString(CryptoJS.enc.Utf8))), _E5_8A_A9_E6_89_8B_E8_A1_8C_E7_82_BA, "gpt-4o", 1);
+        openai_chat_response = async function() {
+            div_set('', "innerHTML", ([fontText(3, '#ff0000', 'Arial', (openai_chat_response_get('br'))), '<br>', '<br>', div_get('', "innerHTML")].join('')));
+
+        };
+        await openai_chat_request((_E5_95_8F_E9_A1_8C_E5_85_A7_E5_AE_B9[0]));
+    }
+
+
+    _E5_8E_9F_E5_A7_8B_E5_AF_86_E7_A2_BC1 = 'sk-proj-T1gHnWvCr5em_iNidyQ0LGCyAYkufBnkZLlgqPEl2CbpAYn2q_6YCQ61d7o-TD_iLCrnfNqudpT3BlbkFJBthgR6Dh-';
+    _E5_8E_9F_E5_A7_8B_E5_AF_86_E7_A2_BC2 = 'vTxVjlu2A4yQPHXpHNT2O6suoSmXu2U2U2YZW22iwag_MRDrkA_AbfokQBAHjwAgA';
+    _E5_8A_A0_E5_AF_86_E5_AF_86_E7_A2_BC1 = (CryptoJS.AES.encrypt(_E5_8E_9F_E5_A7_8B_E5_AF_86_E7_A2_BC1, 'LLM1').toString());
+    _E5_8A_A0_E5_AF_86_E5_AF_86_E7_A2_BC2 = (CryptoJS.AES.encrypt(_E5_8E_9F_E5_A7_8B_E5_AF_86_E7_A2_BC2, 'LLM2').toString());
+    image_create('', 'https://suwei0403.github.io/Miracle-Temple-Carbon/碳足跡LOGO_去背.png', 200, 300, 0, 150, 999, true);
+    span_create('', 390, 100, 24, '碳足跡', 999);
+    span_set('', "innerHTML", '碳足跡');
+    div_create('', 400, 350, 220, 150, "double", 10, '#ffcc00', '#ffffff', '#000000', 14, 10, '', 999, true);
+    _E5_95_8F_E9_A1_8C_E5_85_A7_E5_AE_B9 = [];
+    _E5_95_8F_E9_A1_8C_E5_85_A7_E5_AE_B9 = ['以線上燒香焚金點燈取代實體行為"點三炷香和焚燒一支金紙",可減少多少碳足跡?', ['假設某地區舉辦為期一天的神明繞境活動，吸引了 5,000 名參與者。請估算該活動的總碳排放量，考慮以下因素：', '1.參與者的交通方式分佈：60% 駕駛汽車（平均行駛 20 公里）、30% 騎乘機車（平均行駛 15 公里）、10% 步行。', '2.活動期間使用的音響設備和照明設施的能源消耗總計 50 千瓦時。', '3.活動結束後產生的廢棄物總量為 1,000 公斤，其中 60% 可回收，40% 需進行焚燒處理。'].join(''), ['寺廟每日接受信徒供奉的水果和食品總計 200 公斤。請估算以下情境的碳排放量：', '1.供品的生產和運輸過程產生的碳排放。', '2.未食用供品的處理方式：50% 進行堆肥，50% 進行焚燒。', '3.若改為 80% 供品進行回收利用（如捐贈給需要的人），20% 進行堆肥，碳排放量將如何變化？'].join(''), ['信眾每日到廟宇祈福距離為 15 公里，請比較以下交通方式的每日碳排放量：', '1.駕駛私人汽車（燃油效率為每公升 12 公里）。', '2.騎乘機車（燃油效率為每公升 30 公里）。', '3.搭乘公共汽車（每位乘客每公里碳排放量為 0.05 公斤 CO₂）。', '4.搭乘地鐵（每位乘客每公里碳排放量為 0.03 公斤 CO₂）。', '5.步行或騎自行車（零碳排放）。', '6.並根據計算結果，建議該人選擇最環保的通勤方式。'].join('')];
+    _E7_A2_B3_E8_B6_B3_E8_B7_A1_E5_95_8F_E9_A1_8C_E4_B9_8B_E6_8F_90_E7_A4_BA_E8_A9_9E = [];
+    _E7_A2_B3_E8_B6_B3_E8_B7_A1_E5_95_8F_E9_A1_8C_E4_B9_8B_E6_8F_90_E7_A4_BA_E8_A9_9E = ['燒香焚金點燈求籤：請計算並分析傳統廟宇活動中，燒香、焚燒金紙、點燈和求籤等行為所產生的碳足跡。請提供每項活動的碳排放量估計，並建議可能的減碳措施。', '神明繞境：請估算神明繞境活動期間，因人員和物資的運輸、活動進行等所產生的碳足跡。請列出主要的碳排放來源，並提出降低碳排放的建議。', '供品回收：請分析廟宇供品在使用後的回收處理過程中所涉及的碳足跡，包括運輸、處理和再利用等環節。請提供減少供品回收過程中碳排放的策略。', '搭乘大眾運輸系統：請計算個人搭乘不同類型的大眾運輸工具（如公車、地鐵、火車）在特定距離內的碳排放量，並與私人交通工具進行比較。請提供選擇低碳交通方式的建議。'];
+    _E5_8A_A9_E6_89_8B_E8_A1_8C_E7_82_BA = ['你是一位碳足跡分析專家。', _E7_A2_B3_E8_B6_B3_E8_B7_A1_E5_95_8F_E9_A1_8C_E4_B9_8B_E6_8F_90_E7_A4_BA_E8_A9_9E[0], '任務1:先上網搜尋所有碳足跡的參考資料,且學習如何分析。', '任務2:依據環境品質文教基金會的研究數據 1棵樹每月可吸收約0.9公斤二氧化碳量。', '任務3:不必過多解釋,只需呈現碳排放量與必需種幾棵樹來吸收。'].join('');
+    head_add_viewport(1, 1, 2, "yes");
+    include_file("css", "", 'https://fustyles.github.io/webduino/GameElements_20190131/test_scroll.css');
+    await await openAI_E7_A2_B3_E8_B6_B3_E8_B7_A1_E5_88_86_E6_9E_90();
+};
+main();
+</script>
+</body></html>
