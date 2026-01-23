@@ -1,0 +1,113 @@
+<!DOCTYPE html><html><head><meta charset='utf-8'><meta http-equiv='Access-Control-Allow-Headers' content='Origin, X-Requested-With, Content-Type, Accept'><meta http-equiv='Access-Control-Allow-Methods' content='GET,POST,PUT,DELETE,OPTIONS'><meta http-equiv='Access-Control-Allow-Origin' content='*'><meta http-equiv='Access-Control-Allow-Credentials' content='true'><script src='https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js'></script><script src='https://fustyles.github.io/webduino/SpBlocklyJS/GameElements_20190131/marked.min.js'></script><script src='https://fustyles.github.io/webduino/SpBlocklyJS/GameElements_20190131/gameelements.js'></script><link rel='stylesheet' href='https://fustyles.github.io/webduino/SpBlocklyJS/css/icon_custom.css' /><script src='https://fustyles.github.io/webduino/SpBlocklyJS/MQTT_20220324/mqtt.min.js'></script><script src='https://fustyles.github.io/webduino/SpBlocklyJS/googlemap_20241226/googlemap.js'></script></head><body>
+<script>
+const delay = (seconds) => {
+    return new Promise((resolve) => {
+        setTimeout(resolve, seconds * 1000);
+    });
+};
+const main = async () => {
+    var _E9_87_91_E9_91_B0, _E7_B7_AF_E5_BA_A6, _E7_B6_93_E5_BA_A6, MQTT_E8_B3_87_E6_96_99, _E8_A6_96_E7_B7_9A_E6_96_B9_E4_BD_8D_E8_A7_92, _E8_A6_96_E7_B7_9A_E5_82_BE_E6_96_9C_E8_A7_92;
+
+    function mqttBinarytobase64(input_array) {
+        const content = new Uint8Array(input_array);
+        return btoa(String.fromCharCode.apply(null, content));
+    }
+
+
+    let map_1;
+
+
+    let map_2;
+
+
+
+    _E9_87_91_E9_91_B0 = 'AIzaSyAV9kP2RlqZIas1_zQMfrFVGAnuK1c7brE';
+    _E7_B7_AF_E5_BA_A6 = 22.584497;
+    _E7_B6_93_E5_BA_A6 = 120.289272;
+    const clientId = "mqtt_" + Math.random().toString(16).substr(2, 8);
+    const options = {
+        username: '',
+        password: '',
+        keepalive: 60,
+        clientId: clientId,
+        protocolId: "MQTT",
+        protocolVersion: 4,
+        clean: true,
+        reconnectPeriod: 1000,
+        connectTimeout: 30 * 1000
+    }
+
+    var mqtt_client = mqtt.connect('wss://broker.mqttgo.io:8084/mqtt', options);
+    mqtt_client.on("connect", () => {
+        console.log("connected");
+        mqtt_client.subscribe('fustyles/gps');
+        mqtt_client.on("message", async function(topic, payload) {
+            MQTT_E8_B3_87_E6_96_99 = (new TextDecoder().decode(payload)).split(',');
+            _E7_B7_AF_E5_BA_A6 = MQTT_E8_B3_87_E6_96_99[0];
+            _E7_B6_93_E5_BA_A6 = MQTT_E8_B3_87_E6_96_99[1];
+            _E8_A6_96_E7_B7_9A_E6_96_B9_E4_BD_8D_E8_A7_92 = MQTT_E8_B3_87_E6_96_99[2];
+            _E8_A6_96_E7_B7_9A_E5_82_BE_E6_96_9C_E8_A7_92 = MQTT_E8_B3_87_E6_96_99[3];
+            updateMarkerContent('', ([_E7_B7_AF_E5_BA_A6, ',', _E7_B6_93_E5_BA_A6, ',', 0].join('')), "update_position");
+            updateMarkerContent('', ([getMarkerSetting('', "latitude"), ', ', getMarkerSetting('', "longtitude")].join('')), "update_content");
+            centerMap(map_1, _E7_B7_AF_E5_BA_A6, _E7_B6_93_E5_BA_A6);
+            positionMap(map_2, _E7_B7_AF_E5_BA_A6, _E7_B6_93_E5_BA_A6);
+            updateMapContent(map_2, _E8_A6_96_E7_B7_9A_E6_96_B9_E4_BD_8D_E8_A7_92, "heading");
+            updateMapContent(map_2, _E8_A6_96_E7_B7_9A_E5_82_BE_E6_96_9C_E8_A7_92, "pitch");
+        })
+    })
+
+    div_create('1', 400, 400, 0, 0, "none", 1, '#000000', '#ffffff', '#000000', 14, 1, '', 999, true);
+    div_create('2', 400, 400, 420, 0, "none", 1, '#000000', '#ffffff', '#000000', 14, 1, '', 999, true);
+    var url = "https://maps.googleapis.com/maps/api/js?key=" + _E9_87_91_E9_91_B0 + "&callback=initMap&v=weekly&libraries=marker";
+    var s = document.createElement("script");
+    s.async = true;
+    s.defer = true;
+    s.src = url;
+    document.body.append(s);
+
+    function initMap() {
+        let position_map_1 = {
+            lat: _E7_B7_AF_E5_BA_A6,
+            lng: _E7_B6_93_E5_BA_A6
+        };
+        map_1 = new google.maps.Map(document.getElementById("gamediv_" + "1"), {
+            zoom: 18,
+            center: position_map_1,
+            mapId: "mapid_" + "1",
+            mapTypeId: "roadmap",
+        });
+        let position_map_2 = {
+            lat: _E7_B7_AF_E5_BA_A6,
+            lng: _E7_B6_93_E5_BA_A6
+        };
+        map_2 = new google.maps.StreetViewPanorama(document.getElementById("gamediv_" + "2"), {
+            position: position_map_2,
+            mapId: "mapid_" + "2",
+            pov: {
+                heading: 0,
+                pitch: 0,
+            },
+        });
+
+        if (typeof loadedMap === "function") loadedMap();
+    }
+    window.initMap = initMap;
+    async function loadedMap() {
+        centerMap(map_1, _E7_B7_AF_E5_BA_A6, _E7_B6_93_E5_BA_A6);
+        positionMap(map_2, _E7_B7_AF_E5_BA_A6, _E7_B6_93_E5_BA_A6);
+        addMapPoint('', map_1, _E7_B7_AF_E5_BA_A6, _E7_B6_93_E5_BA_A6, 0, '', '繞境中');
+        updateMarkerContent('', true, "update_gmpDraggable");
+        updateMarkerContent('', 'https://suwei0403.github.io/Miracle-Temple-Carbon/Q版神轎.svg', "update_icon");
+        updateMarkerContent('', true, "open_content");
+        getMarker('').addListener("dragend", async function(e) {
+            positionMap(map_2, (getMarkerSetting('', "latitude")), (getMarkerSetting('', "longtitude")));
+            updateMarkerContent('', ([getMarkerSetting('', "latitude"), ', ', getMarkerSetting('', "longtitude")].join('')), "update_content");
+
+        });
+
+    }
+    window.loadedMap = loadedMap;
+};
+main();
+</script>
+</body></html>
